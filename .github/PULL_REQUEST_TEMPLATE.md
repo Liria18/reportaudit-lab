@@ -1,29 +1,90 @@
-## Issue relacionado
+<!-- Primero el contexto. Closes #12 cierra el Issue al fusionar en main.
+Si el PR no lo termina, usa Refs #12. Sin Issue: NA y el motivo. -->
 
-<!-- Closes #N  (el PR cerrará el Issue automáticamente al fusionarse) -->
+## Linked issue
 
-## Qué cambia y por qué
+Closes #
 
-<!-- Una o dos frases: el problema que existía y cómo lo resuelve este cambio -->
+## Summary
 
-## Hallazgos que resuelve (si aplica)
+<!-- Qué problema resuelve y por qué, en 2–3 frases y en inglés. -->
 
-| Herramienta que lo detectó | Regla / CVE | Archivo:línea | Clasificación (SAST / SCA / Secreto) | Severidad |
-|---|---|---|---|---|
-|  |  |  |  |  |
+## Type of change
 
-## Evidencia de verificación
+<!-- Debe coincidir con el prefijo Conventional Commits del título. -->
 
-<!-- Qué ejecutaste DESPUÉS del cambio para comprobar que funciona y que el hallazgo desapareció -->
+- [ ] fix — bug fix
+- [ ] feat — new feature
+- [ ] refactor — internal change, same behaviour
+- [ ] perf — performance improvement
+- [ ] test — tests added or changed
+- [ ] docs — documentation only
+- [ ] build / ci — dependencies, pipeline or configuration
+- [ ] BREAKING CHANGE — breaks compatibility; explain the migration
 
-## Decisiones justificadas (VEX / riesgo aceptado)
+## What changed
 
-<!-- Si algún hallazgo NO se corrige, explica por qué no es explotable y enlaza el documento VEX -->
+<!-- Los cambios técnicos importantes, uno por línea. -->
 
-## Checklist del autor
+- 
 
-- [ ] El título del PR sigue Conventional Commits (`tipo(ámbito): descripción`)
-- [ ] Volví a ejecutar la herramienta que detectó cada hallazgo y ya no aparece (o quedó justificado)
-- [ ] No añadí ningún secreto nuevo al repositorio
-- [ ] `python app/servicio.py` sigue arrancando y respondiendo
-- [ ] Los checks del pipeline están en verde
+## Security & supply-chain impact
+
+<!-- Obligatorio. Si una casilla no aplica, márcala y escribe NA. -->
+
+- [ ] No new dependencies, or each one is justified below: name, exact version, licence, why.
+- [ ] All required checks are green: SAST, SCA, secrets and no new code-scanning alerts.
+- [ ] No secrets, tokens or personal data in the code, the commits or the logs.
+- [ ] If dependencies changed, the SBOM will be regenerated in the next release.
+
+### Findings addressed
+
+<!-- Una fila por hallazgo. Borra la tabla si no corrige ninguno. -->
+
+| ID | Detected by | Rule / CVE | File:line | Category (SAST/SCA/Secret) | Severity | Resolution |
+|---|---|---|---|---|---|---|
+
+### Accepted risks
+
+<!-- Enlace al VEX de lo que NO se corrige y quién asume el riesgo. -->
+
+- 
+
+### Credentials to rotate
+
+<!-- Toda credencial que estuvo en el historial está comprometida. -->
+
+- 
+
+## Design decisions
+
+<!-- Lo que el revisor no puede deducir leyendo el diff. -->
+
+- **Approach and why:**
+- **Alternatives discarded:**
+
+## How to review
+
+<!-- Orden de lectura recomendado y en qué debe fijarse el revisor. -->
+
+1. 
+
+## Testing & evidence
+
+- [ ] Tested locally: the service starts and the affected endpoints behave as expected.
+- [ ] `pre-commit run --all-files` passes.
+- [ ] Evidence attached: terminal output, screenshots or reports in `docs/evidencias/`.
+
+## Risks & rollback
+
+<!-- Qué puede salir mal y cómo se deshace. -->
+
+- 
+
+## Author checklist
+
+- [ ] I self-reviewed the diff on GitHub before requesting review.
+- [ ] Small PR: ideally ≤400 changed lines about a single topic.
+- [ ] The PR title follows Conventional Commits.
+- [ ] Comments explain **why**, not just what.
+- [ ] If an AI assistant was used, I reviewed and understand every line I submit.
