@@ -1,0 +1,25 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://github.com/Liria18/reportaudit-lab/vex/2026-001",
+  "author": "Jose Liria <joseliria13@gmail.com>",
+  "timestamp": "2026-11-25T18:45:02Z",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "CVE-2024-34069",
+        "aliases": [
+          "GHSA-2g68-c3qc-8985"
+        ]
+      },
+      "products": [
+        {
+          "@id": "pkg:pypi/werkzeug@3.0.1"
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "CVE-2024-34069 only affects the Werkzeug interactive debugger, which is reachable only when the application runs with debug=True. ReportAudit starts the server with debug=False (app/servicio.py, line 64: app.run(host=\"127.0.0.1\", port=config[\"servicio\"][\"puerto\"], debug=False)) and never enables the debugger elsewhere, so the vulnerable code is not in the execution path. The dependency is upgraded anyway to werkzeug 3.1.9 by the Dependabot grouped security PR #23."
+    }
+  ]
+}
