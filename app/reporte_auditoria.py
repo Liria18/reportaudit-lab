@@ -55,12 +55,15 @@ def buscar_reportes_cliente(nombre_cliente, ruta_db=RUTA_DB):
 
 def convertir_a_pdf(nombre_archivo):
     """Convierte un reporte HTML a PDF usando la utilidad del sistema."""
-    if not NOMBRE_HTML_VALIDO.match(Path(nombre_archivo).name):
+    # Se valida el valor COMPLETO (no solo Path(...).name): sin barras, sin rutas y sin "-" inicial.
+    if not NOMBRE_HTML_VALIDO.fullmatch(nombre_archivo):
         raise ValueError("Nombre de archivo no válido")
-    salida = nombre_archivo + ".pdf"
+    # Prefijo "./": el argumento nunca puede empezar por "-" ni leerse como una opción del programa.
+    entrada = os.path.join(".", nombre_archivo)
+    salida = entrada + ".pdf"
     try:
         # Lista de argumentos y sin shell: ; & | llegan como texto literal, no como órdenes.
-        subprocess.run(["wkhtmltopdf", nombre_archivo, salida], check=False)
+        subprocess.run(["wkhtmltopdf", entrada, salida], check=False)
     except FileNotFoundError:
         print("Aviso: wkhtmltopdf no está instalado; no se generó el PDF.")
     return salida
