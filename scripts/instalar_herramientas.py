@@ -78,15 +78,11 @@ def nombre_del_archivo(herramienta, version, sistema, arquitectura):
 
 
 def descargar(url, destino):
-    """Descarga una URL a un archivo local."""
-    print(f"   descargando {url}")
-    with urllib.request.urlopen(url, timeout=120) as respuesta, open(destino, "wb") as salida:
-        while True:
-            bloque = respuesta.read(1024 * 1024)
-            if not bloque:
-                break
-            salida.write(bloque)
-
+    """Descarga una URL a un archivo local usando curl para evitar bloqueos."""
+    print(f" descargando {url}")
+    # -L sigue las redirecciones de GitHub, -s lo hace silencioso, -o guarda el archivo
+    resultado = subprocess.run(["curl", "-L", "-s", "-o", str(destino), url])
+    if resultado.returncode != 0: raise SystemExit(f" ERROR: Falló la descarga con curl para {url}")
 
 def sha256_de(ruta):
     """Calcula el SHA-256 de un archivo leyéndolo por bloques."""
